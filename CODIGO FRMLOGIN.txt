@@ -1,0 +1,27 @@
+//Variables para controlar los intentos
+        int intentos = 3;
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            
+            string usu = txtUsuario.Text.ToUpper();
+            string cla = txtClave.Text.ToUpper();
+            if (usu=="ADMIN" && cla=="ADMIN")
+            {                
+                frmProductos frm = new frmProductos();                
+                frm.Show();
+                this.Hide();                
+            }
+            else
+            {
+                intentos--;
+                MessageBox.Show("Usuario o Clave Incorrecta \nTe quedan "+intentos+" intentos","AVISO");
+                txtUsuario.Clear();
+                txtClave.Clear();
+                txtUsuario.Focus();                
+            }
+            if (intentos==0)
+            {
+                MessageBox.Show("Fueron demasiados intentos","AVISO");
+                this.Close();
+            }
+        }
